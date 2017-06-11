@@ -1,183 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  <title>Track</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
-
+    <!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    <title>Track</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
+
 <body>
-
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-  <div class="container">
-
-    <div class="wrapper">
-
-      <div class="logo-wrapper">
-
-      <h1>Track</h1>
-      <h3>Live train timetables</h3>
-
-      </div>
-
-      <div class="error-message"></div>
-
-      <form class="form-wrapper">
-          
-          <input id="origin-input" class="input origin-input" type="text" autocomplete="off" placeholder="Enter origin station code">
-          <input id="submit-button" class="submit-button button" value="" type="submit">
-          
-        </form>
-
-      <div class="closest-stations">
-
-      <h3>Stations Nearby</h3>
-
-        <div class="button-container">
-
-          <img class="loader" src="/img/loader.svg">
-          <!-- content added dynamically -->
-
-      </div>
-
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="search-results-container hidden">
-
-    <div class="search-results-wrapper">
-
-      <div class="content-wrapper">
-
-      <div class="close-button-wrapper">
-      <button class="close-search-results-button"></button>
-      </div>
-
-      <div class="search-results-info">
-
-        <h2>Live departures from <span class="search-station"> {station}</span></h2>
-
-      </div>
-
-      <div class="search-results-service-info">
-
-        <p class="service-delay-info">{delay info}</p>
-
-      </div>
-
-      <div class="search-results-services">
-
-      <!-- add content dynamically -->
-
-
-
-
-        <!-- <div class="individual-service">
-
-          <div class="service-show-default">
-
-            <div class="service-time-wrapper">
-            
-              <span class="service-time time-status-span">{ time }</span>
-              <span class="service-status time-status-span delayed-more-5">{ status }</span>
-
+    <!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+        <div class="wrapper">
+            <div class="logo-wrapper">
+                <h1>Track</h1>
+                <h3>Live train timetables</h3>
             </div>
-
-            <div class="service-destination-wrapper">
-
-            <span class="service-destination service-destination-span">to { destination } { via station}</span>
-            <span class="service-platform service-destination-span">Platform { number }</span>
-
-          </div>
-
+            <div class="error-message"></div>
+            <form class="form-wrapper">
+                <input id="origin-input" class="input origin-input" type="text" autocomplete="off" placeholder="Enter origin station code">
+                <input id="submit-button" class="submit-button button" value="" type="submit">
+            </form>
+            <div class="closest-stations">
+                <h3>Stations Nearby</h3>
+                <div class="button-container">
+                    <img class="loader" src="/final-trackk/img/loader.svg">
+                    <!-- content added dynamically -->
+                </div>
+            </div>
         </div>
-
-        <div class="service-more-info-wrapper">
-
-          <div class="show-click">
-
-            <div class="service-calling-points">
-
-            <span class="calling-points">{ calling points }</span>
-
-            </div>
-
-            <div class="service-operator-length">
-
-              <span class="service-journey-time">{ journey time }</span>
-              <span class="service-operator">Operated by { operator }</span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div> -->
-
-
-
-
-
-
-
-
-
     </div>
-  
-  </div>
-  
-</div>
-
-</div>
-
+    <div class="search-results-container hidden">
+        <div class="search-results-wrapper">
+            <div class="content-wrapper">
+                <div class="close-button-wrapper">
+                    <button class="close-search-results-button"></button>
+                </div>
+                <div class="search-results-info">
+                    <h2>Live departures from <span class="search-station"> {station}</span></h2>
+                </div>
+                <div class="search-results-service-info">
+                    <p class="service-delay-info">{delay info}</p>
+                </div>
+                <div class="search-results-services">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-
-  
-  
-
-  <script type="text/javascript" src="script.js"></script>
-
+<script type="text/javascript" src="script.js"></script>
 <!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
+
 </html>
