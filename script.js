@@ -245,6 +245,11 @@ function app() {
 						// declare variable for service status span
 						var serviceStatusSpan = document.querySelectorAll(".service-status");
 
+						var serviceScheduledDeparture = '<span class="service-time time-status-span">' + serviceInfo[i].std + '</span>'
+						var serviceStatus = "<span class='service-status time-status-span ontime'>" + serviceInfo[i].etd + "</span>"
+						
+
+
 						// if not on time, run code
 						} else if (serviceStatus != "On time") {
 
