@@ -16,11 +16,10 @@ body {
 }
 
 .wrapper {
-	width: 100%;
-	height: 100vh;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+	box-sizing: border-box;
 }
 
 .error-message {
@@ -61,7 +60,8 @@ body {
 }
 
 .origin-input {
-	width: 378px;
+	width: 100%;
+	max-width: 378px;
 	text-align: center;
 	padding: 10px;
 	border-radius: 25px 0 0 25px;
