@@ -11,8 +11,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100vw;
-	height: 100vh;
+	box-sizing: border-box;
 }
 
 .wrapper {
@@ -96,7 +95,6 @@ body {
 
 .button-container {
 	text-align: center;
-	height: 49px;
 }
 
 .closest-stations-button {
