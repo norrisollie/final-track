@@ -24,8 +24,6 @@ function app() {
 	// origin inout field
 	var originInput = document.querySelector(".origin-input");
 
-
-
 	////////////////////
 	// END VARIABLES ///
 	////////////////////
@@ -164,11 +162,6 @@ function app() {
 
 			console.log(originValue);
 
-
-			// remove hidden class to show timetable-results-wrapper (and container)
-			timetableResultsWrapper.classList.remove("hidden");
-			timetableResultsContainer.classList.remove("hidden");
-
 			// token for national rail api
 			var accessToken = "c8eebaa7-d421-4025-bb02-989cc9c53b39";
 			// declare variable for the api url string
@@ -227,6 +220,10 @@ function app() {
             			// enter the trainServices array
     				var serviceInfo = stationData.trainServices;
 
+    				var searchResultsServices = document.querySelector(".search-results-services");
+
+            			searchResultsServices.innerHTML = "";
+
     				for(var i = 0; i < serviceInfo.length; i++) {
     					console.log(serviceInfo[i]);
 
@@ -241,17 +238,58 @@ function app() {
 						var serviceId = serviceInfo[i].serviceID;
 						var serviceVia = serviceInfo[i].destination[0].via;
 
+						// if service status is on time/delayed/cancelled
+						// if on time, run code
+						if(serviceStatus === "On time") {
+
+						// declare variable for service status span
+						var serviceStatusSpan = document.querySelectorAll(".service-status");
+
+						// if not on time, run code
+						} else if (serviceStatus != "On time") {
+
+							// redeclare variables
+							var serviceScheduledDeparture = '<span class="service-time time-status-span linethrough">' + serviceInfo[i].std + '</span>'
+							var serviceStatus = "<span class='service-status time-status-span delayed'>" + serviceInfo[i].etd + "</span>"
+						
+						}
+
+						// if serviceVia is not provided
+						if (serviceVia === null) {
+
+							// change variable to empty string
+							var serviceVia = "";
+
+						} else if (serviceVia != null) {
+
+							// keep variable the same
+							var serviceVia = serviceInfo[i].destination[0].via;
+
+						}
+
+
+						// declare variable for service status span
+						var serviceStatusSpan = document.querySelectorAll(".service-status");
+
+						// if platform unavailable
+						if (currentPlatform === null) {
+							var currentPlatform = "unavailable"
+						} else if (currentPlatform != null) {
+							var currentPlatform = serviceInfo[i].platform;
+						}
+
 						var serviceInfoTemplate = '<div class="individual-service">'
     										+ '<div class="service-show-default">'
     										+ '<div class="service-time-wrapper">'
-    										+ '<span class="service-time time-status-span">' + serviceScheduledDeparture + '</span>'
-    										+ '<span class="service-status time-status-span delayed-more-5">' + serviceStatus + '</span>'
+    										+ serviceScheduledDeparture
+    										+ serviceStatus
     										+ '</div>'
     										+ '<div class="service-destination-wrapper">'
     										+ '<span class="service-destination service-destination-span">to ' + serviceDestination + ' ' + serviceVia + '</span>'
             								+ '<span class="service-platform service-destination-span">Platform ' + currentPlatform +'</span>'
-            								+ '</div></div>'
-            								+ '<div class="service-more-info-wrapper">'
+            								+ '</div>'
+            								+ '<div class="show-more-info"><button class="show-more-info-button">></button></div>'
+            								+ '<div class="service-more-info-wrapper hidden">'
             								+ '<div class="show-click">'
             								+ '<div class="service-calling-points">'
             								+ '<span class="calling-points">{ calling points }</span>'
@@ -261,28 +299,40 @@ function app() {
             								+ '<span class="service-operator">Operated by ' + serviceOperator + '</span>'
             								+ '</div></div></div></div>';
 
-            			var searchResultsServices = document.querySelector(".search-results-services");
-
+            			// add button template to search results container
             			searchResultsServices.innerHTML += serviceInfoTemplate;
+
+            			// remove hidden class to show timetable-results-wrapper (and container)
+						timetableResultsWrapper.classList.remove("hidden");
+						timetableResultsContainer.classList.remove("hidden");
 
     				}
 
     			} else {
     			// We reached our target server, but it returned an error
+    			// remove hidden class to show timetable-results-wrapper (and container)
+    			var errorMessage = document.querySelector(".error-message");
+
+    			// add error message in to inner html
+    			errorMessage.innerHTML = "<p>There is an error. Please try again.</p>";
+
     		}
+
     	};
+
+    	// if there is an error, run this function
     	natRailApiReq.onerror = function() {
     	// There was a connection error of some sort
+
+    	var errorMessage = document.querySelector(".error-message");
+
+		// add error message in to inner html
+		errorMessage.innerHTML = "<p>There is an error. Please try again.</p>";
+
     };
 
+    // send the request
     natRailApiReq.send();
-
-
-
-
-
-
-
 
 		}
 

@@ -17,12 +17,26 @@ body {
 
 .wrapper {
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.error-message {
+	height: 19px;
+}
+
+.error-message > p {
+	margin:0;
+	color: red;
+	text-align: center;
 }
 
 .logo-wrapper {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	margin-bottom:20px;
 }
 
 .logo-wrapper > h1 {
@@ -41,8 +55,8 @@ body {
 .form-wrapper {
 	display: flex;
 	justify-content: center;
-	margin-top:20px;
 	margin-bottom: 20px;
+	margin-top: 5px;
 }
 
 .origin-input {
@@ -59,6 +73,11 @@ body {
 	outline: none;
 	width: 39px;
 	border-radius: 0 25px 25px 0;
+	background-image: url(/img/go.svg);
+	background-size: 50%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: #FFF;
 }
 
 .closest-stations {
@@ -110,11 +129,11 @@ body {
 	padding-right: 3px;
 	background-size: contain;
 	background-repeat: no-repeat;
-	background-image: url("/final-trackk/img/nr.svg");
+	background-image: url("/img/nr.svg");
 }
 
 .closest-stations-button:hover > .nr-logo {
-	background-image: url("/final-trackk/img/nr-white.svg");
+	background-image: url("/img/nr-white.svg");
 }
 
 .search-results-container {
@@ -143,7 +162,7 @@ body {
 }
 
 .close-search-results-button {
-	background-image: url(/final-trackk/img/cross.svg);
+	background-image: url(/img/cross.svg);
 	background-size:contain;
 	height: 20px;
 	width: 20px;
@@ -199,6 +218,16 @@ body {
 	flex-direction: row;
 	justify-content: space-between;
 }
+
+.show-more-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+}
+
+
+
 .show-click {
 	padding:10px;
 }
@@ -206,11 +235,19 @@ body {
 	padding-bottom: 10px;
 }
 
+.ontime {
+	color: green;
+}
+
 .delayed-less-5 {
 	color: orange;
 }
-.delayed-more-5, .service-cancelled {
+.delayed, .service-cancelled {
 	color: red;
+}
+
+.linethrough {
+	text-decoration: line-through;
 }
 
 .hidden {
