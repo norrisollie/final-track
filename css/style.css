@@ -190,7 +190,8 @@ body {
 .service-time-wrapper {
 	padding: 20px;
 	text-align: center;
-	width:114px;
+	min-width:114px;
+	box-sizing: border-box;
 }
 
 .service-destination-wrapper {
@@ -274,6 +275,13 @@ h1, h2, h3 {
 	margin: 0;
 }
 
+@media screen and (min-width: 800px) {
+	.container {
+		height: 100vh;
+		width: 100vw;
+	}
+}
+
 @media screen and (max-width: 800px) {
 
 	.search-results-wrapper {
@@ -283,6 +291,15 @@ h1, h2, h3 {
 
 .wrapper {
 	margin: 20px;
+}
+
+.service-time-wrapper {
+	padding: 10px;
+}
+
+.service-destination-wrapper {
+	padding: 10px;
+
 }
 
 
