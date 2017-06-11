@@ -73,7 +73,7 @@ body {
 	outline: none;
 	width: 39px;
 	border-radius: 0 25px 25px 0;
-	background-image: url(/final-trackk/img/go.svg);
+	background-image: url(/img/go.svg);
 	background-size: 50%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -129,11 +129,11 @@ body {
 	padding-right: 3px;
 	background-size: contain;
 	background-repeat: no-repeat;
-	background-image: url("/final-trackk/img/nr.svg");
+	background-image: url("/img/nr.svg");
 }
 
 .closest-stations-button:hover > .nr-logo {
-	background-image: url("/final-trackk/img/nr-white.svg");
+	background-image: url("/img/nr-white.svg");
 }
 
 .search-results-container {
@@ -150,6 +150,7 @@ body {
 }
 
 .search-results-wrapper {
+	position: relative;
 	display: inline-block;
 	width: 50%;
 	top:50px;
@@ -162,7 +163,7 @@ body {
 }
 
 .close-search-results-button {
-	background-image: url(/final-trackk/img/cross.svg);
+	background-image: url(/img/cross.svg);
 	background-size:contain;
 	height: 20px;
 	width: 20px;
@@ -179,7 +180,6 @@ body {
 	left: 0px;
 	justify-content: flex-end;
 }
-
 
 .individual-service {
 	display: flex;
@@ -226,6 +226,18 @@ body {
 	margin-left: auto;
 }
 
+.show-more-info-button {
+	border: none;
+	outline: none;
+	background-image: url(/img/expand.svg);
+	background-size: 50%;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 25px;
+	height: 25px;
+	background-color: #F8f8f8;
+}
+
 
 
 .show-click {
@@ -266,18 +278,11 @@ h1, h2, h3 {
 @media screen and (max-width: 800px) {
 
 	.search-results-wrapper {
-	display: inline-block;
-	width: 75%;
-	top:50px;
+	width: calc(100vw - 40px);
+	top: 20px;
 }
 
-@media screen and (max-width: 600px) {
 
-	.search-results-wrapper {
-	display: inline-block;
-	width: 100%;
-	top:50px;
-}
 
 
 

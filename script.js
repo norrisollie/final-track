@@ -23,6 +23,8 @@ function app() {
 	var timetableResultsWrapper = document.querySelector(".search-results-wrapper");
 	// origin inout field
 	var originInput = document.querySelector(".origin-input");
+	// showm-more button
+	var showMoreInfoButton = document.querySelectorAll(".show-more-info-button");
 
 	////////////////////
 	// END VARIABLES ///
@@ -293,11 +295,11 @@ function app() {
     										+ '<span class="service-destination service-destination-span">to ' + serviceDestination + ' ' + serviceVia + '</span>'
             								+ '<span class="service-platform service-destination-span">Platform ' + currentPlatform +'</span>'
             								+ '</div>'
-            								+ '<div class="show-more-info"><button class="show-more-info-button">></button></div>'
+            								+ '<div class="show-more-info"><button class="show-more-info-button" data-serviceid=' + serviceId +'></button></div>'
             								+ '<div class="service-more-info-wrapper hidden">'
             								+ '<div class="show-click">'
             								+ '<div class="service-calling-points">'
-            								+ '<span class="calling-points">{ calling points }</span>'
+            								+ '<span class="calling-points">'+ "{ calling points } " +'</span>'
             								+ '</div>'
             								+ '<div class="service-operator-length">'
             								+ '<span class="service-journey-time">{ journey time }</span>'
@@ -310,8 +312,7 @@ function app() {
             			// remove hidden class to show timetable-results-wrapper (and container)
 						timetableResultsWrapper.classList.remove("hidden");
 						timetableResultsContainer.classList.remove("hidden");
-
-    				}
+					}
 
     			} else {
     			// We reached our target server, but it returned an error
