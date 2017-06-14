@@ -126,6 +126,23 @@ function app() {
 
                     };
 
+                    var closestStationButton = document.querySelectorAll(".closest-stations-button");
+
+                    for (var i = 0; i <= closestStationButton.length; i++) {
+                        closestStationButton[i].addEventListener("click", originInputAddCode);
+
+
+                        // function to put crs code from button in to 
+                        function originInputAddCode(e) {
+
+                            // declare variable for crs code dataset
+                            var targetCrs = e.currentTarget.dataset.code;
+
+                            // add dataset value in to the origin input field
+                            originInput.value = targetCrs;
+                        }
+                    }
+
                 } else {
 
                     console.log("Server reached, but server returned an error.");
@@ -290,7 +307,9 @@ function app() {
                             var currentPlatform = serviceInfo[i].platform;
                         }
 
-                        var serviceInfoTemplate = '<div class="individual-service">' + '<div class="service-show-default">' + '<div class="service-time-wrapper">' + serviceScheduledDeparture + serviceStatus + '</div>' + '<div class="service-destination-wrapper">' + '<span class="service-destination service-destination-span">to ' + serviceDestination + ' ' + serviceVia + '</span>' + '<span class="service-platform service-destination-span">Platform ' + currentPlatform + '</span>' + '</div>' + '<div class="show-more-info"><button class="show-more-info-button closed" data-serviceidurlsafe=' + serviceIdForClassName + ' data-serviceid=' + serviceId + '></button></div></div>' + '<div class="service-more-info-wrapper hidden ' + serviceIdForClassName + '">' + '<div class="show-click">' + '<div class="service-calling-points">' + '<span class="calling-points">' + "{ calling points } " + '</span>' + '</div>' + '<div class="service-operator-length">' + '<span class="service-operator">Operated by ' + serviceOperator + '</span>' + '</div></div></div></div>';
+                        var serviceInfoTemplate = '<div class="individual-service">' + '<div class="service-show-default">' + '<div class="service-time-wrapper">' + serviceScheduledDeparture + serviceStatus + '</div>' + '<div class="service-destination-wrapper">' + '<span class="service-destination service-destination-span">to ' + serviceDestination + ' ' + serviceVia + '</span>' + '<span class="service-platform service-destination-span">Platform ' + currentPlatform + '</span>' + '</div>' + '<div class="show-more-info"><button class="show-more-info-button closed" data-serviceidurlsafe=' + serviceIdForClassName +
+                            ' data-serviceid=' + serviceId + '></button></div></div>' + '<div class="service-more-info-wrapper hidden ' + serviceIdForClassName + '">' + '<div class="show-click">' + '<div class="service-calling-points">' + '<span class="calling-points">' + "{ calling points } " + '</span>' + '</div>' + '<div class="service-operator-length">' + '<span class="service-operator">Operated by ' + serviceOperator + '</span>' + '</div></div></div></div>';
+
                         console.log(serviceInfoTemplate)
 
                         // add button template to search results container
@@ -322,6 +341,13 @@ function app() {
                         var targetCallingPoints = e.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[0].childNodes[0];
 
                         console.log(targetCallingPoints)
+
+                        //api request to get service info
+                        // get the service id
+                        var targetServiceId = e.currentTarget.dataset.serviceid;
+
+                        // construct url for request
+                        var serviceUrl = "https://track-5.apphb.com/service/" + targetServiceId + "?accessToken=" + accessToken;
 
                         targetCallingPoints.innerHTML = "";
 
@@ -367,13 +393,6 @@ function app() {
 
                         }
 
-                        //api request to get service info
-                        // get the service id
-                        var targetServiceId = e.currentTarget.dataset.serviceid;
-
-                        // construct url for request
-                        var serviceUrl = "https://track-5.apphb.com/service/" + targetServiceId + "?accessToken=" + accessToken;
-
                         console.log(serviceUrl);
 
                         // declare new request
@@ -385,9 +404,9 @@ function app() {
                         // run function when onload
                         serviceInfoReq.onload = function() {
 
-                        	// if response status is between 200 and 399, run code
+                            // if response status is between 200 and 399, run code
                             if (this.status >= 200 && this.status < 400) {
-                                
+
                                 // declare variable for response text
                                 var serviceInfoData = JSON.parse(serviceInfoReq.responseText);
 
@@ -400,13 +419,13 @@ function app() {
                                 // for loop to get the location name for each calling point
                                 for (var i = 0; i < subsequentCallingPoints.length; i++) {
 
-                                	console.log(subsequentCallingPoints[i].locationName)
+                                    console.log(subsequentCallingPoints[i].locationName)
 
-                                	// declare variable to get the location name
-                                	var theCallingPoints = subsequentCallingPoints[i].locationName;
+                                    // declare variable to get the location name
+                                    var theCallingPoints = subsequentCallingPoints[i].locationName;
 
-                                	// push the names to the empty array
-                                	callingPointArr.push(" " + theCallingPoints)
+                                    // push the names to the empty array
+                                    callingPointArr.push(" " + theCallingPoints)
 
                                 }
 
@@ -429,11 +448,6 @@ function app() {
                         };
 
                         serviceInfoReq.send();
-
-
-
-
-
 
                     }
 
@@ -497,7 +511,10 @@ function app() {
             }
         }
     }
+
+
 }
+
 
 // run the app function
 window.onload = app();
